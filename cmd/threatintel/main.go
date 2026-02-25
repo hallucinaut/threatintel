@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/hallucinaut/threatintel/pkg/intel"
 	"github.com/hallucinaut/threatintel/pkg/correlate"
@@ -71,7 +72,7 @@ Examples:
   threatintel add ip 192.168.1.100
   threatintel check 192.168.1.100
   threatintel reputation 10.0.0.1
-`, "threatintel")
+`,)
 }
 
 func addIndicator(indicatorType, value string) {

@@ -81,7 +81,7 @@ func NewIntelligencePlatform() *IntelligencePlatform {
 
 // AddIndicator adds a threat indicator.
 func (p *IntelligencePlatform) AddIndicator(indicator ThreatIndicator) {
-	key := indicator.Type + ":" + indicator.Value
+	key := string(indicator.Type) + ":" + indicator.Value
 	p.indicators[key] = &indicator
 }
 

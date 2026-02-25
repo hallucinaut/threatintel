@@ -78,7 +78,7 @@ func (c *Correlator) Correlate(events []Event) []*CorrelationEvent {
 	var correlations []*CorrelationEvent
 
 	for _, event := range events {
-		correlation := c.correlateEvent(event)
+		correlation := c.CorrelateEvent(event)
 		if correlation != nil {
 			correlations = append(correlations, correlation)
 		}
@@ -88,7 +88,7 @@ func (c *Correlator) Correlate(events []Event) []*CorrelationEvent {
 }
 
 // correlateEvent correlates a single event.
-func (c *Correlator) correlateEvent(event Event) *CorrelationEvent {
+func (c *Correlator) CorrelateEvent(event Event) *CorrelationEvent {
 	for _, rule := range c.rules {
 		if !rule.Enabled {
 			continue
@@ -229,7 +229,7 @@ func getRecommendation(threatLevel string) string {
 
 // GetCorrelations returns all correlations.
 func (c *Correlator) GetCorrelations() []*CorrelationEvent {
-	return c.correlate(make([]Event, 0))
+	return c.Correlate(make([]Event, 0))
 }
 
 // GenerateReport generates correlation report.
