@@ -2,6 +2,7 @@
 package correlate
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -242,7 +243,7 @@ func GenerateReport(correlations []*CorrelationEvent) string {
 	if len(correlations) > 0 {
 		report += "Correlated Events:\n"
 		for i, corr := range correlations {
-			report += "[" + string(rune(i+49)) + "] " + corr.ThreatLevel + " - Risk Score: " + string(rune(int(corr.RiskScore)+48)) + "%\n"
+			report += "[" + fmt.Sprintf("%d", i+1) + "] " + corr.ThreatLevel + " - Risk Score: " + fmt.Sprintf("%.0f%%", corr.RiskScore) + "%\n"
 			report += "    Attack Pattern: " + corr.AttackPattern + "\n"
 			report += "    Indicators: " + string(rune(len(corr.Indicators)+48)) + " found\n"
 			report += "    Recommendation: " + corr.Recommendation + "\n\n"
